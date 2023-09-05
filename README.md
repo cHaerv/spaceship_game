@@ -13,4 +13,4 @@ This project was isnpired by various 2d spacegames and tower deffence games. I h
 ```
   python main.py
 ```
-
+### If you want to fork this but have a virtual environment directory that isnt named "venv" change the filename in the .gitignore file to the name your virtual environments directory

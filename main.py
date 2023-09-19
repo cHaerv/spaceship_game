@@ -73,7 +73,7 @@ class Ship:
 
 #player class will inherit from Ship 
 class Player(Ship):
-    def __init__(self, x, y, health=100):
+    def __init__(self, x, y, health=50):
         super().__init__(x, y, health)
         self.ship_img = PLAYER_SHIP
         self.projectile_1 = pygame.image.load(os.path.join("assets", "player_projectile.png"))
@@ -92,6 +92,16 @@ class Player(Ship):
                         objs.remove(obj)
                         obj.health -= 10
                         self.projectiles.remove(projectile)
+    
+    def draw(self, window):
+        super().draw(window)
+        self.healthbar(window)
+    
+    
+    def healthbar(self, window):
+        pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width(), 5))
+        pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 5))
+
 
 class Enemy(Ship):
     #different forms of vessels 
@@ -108,7 +118,8 @@ class Enemy(Ship):
         "manta": (pygame.image.load(os.path.join("assets", "crab_projectile.png"))),
         "telhaari": (pygame.image.load(os.path.join("assets", "crab_projectile.png")))
     }
-    def __init__(self, x, y, alien,  health=10):
+
+    def __init__(self, x, y, alien,  health=50):
         super().__init__(x, y, health)
         self.ship_img = self.ALIEN_MAP[alien]
         self.projectile_1 = self.BULLET_MAP[alien]
@@ -229,16 +240,20 @@ def main():
         for enemy in enemies:
             enemy.move(enemy_vel) #moves enemies
             enemy.move_projectiles(projectile_vel, player)
-            if random.randrange(0,500) == 1:
+            if random.randrange(0,500) == 1: 
                 enemy.fire()
 
             if collide(enemy, player):
                 player.health -= 5
                 enemies.remove(enemy)
-
-            if enemy.y > HEIGHT:
+            elif enemy.y > HEIGHT:
                 enemies.remove(enemy) #removes them if they get pas the player and decrements your health
                 lives -= 1
+            
+                
+            
+            
+
             
         player.move_projectiles(-projectile_vel, enemies)
 

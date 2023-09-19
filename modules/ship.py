@@ -1,5 +1,5 @@
-import pygame
-from projectile import Projectile
+
+from .projectile import Projectile
 
 WIDTH, HEIGHT = 800, 750
 

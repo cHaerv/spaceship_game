@@ -1,5 +1,5 @@
 import pygame
-from ship import Ship
+from .ship import Ship
 import os
 
 PLAYER_SHIP = pygame.image.load(os.path.join("assets", "player_ship.png"))

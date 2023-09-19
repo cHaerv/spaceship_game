@@ -1,6 +1,6 @@
 import pygame
 import os
-from ship import Ship
+from .ship import Ship
 
 CRAB_SHIP = pygame.image.load(os.path.join("assets", "crab_ship.png"))
 EI_SHIP = pygame.image.load(os.path.join("assets", "ei_ship.png"))

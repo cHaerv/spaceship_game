@@ -1,5 +1,5 @@
 import pygame
-from collide import collide
+from .collide import collide
 
 class Projectile:
     def __init__(self, x, y, bullet):

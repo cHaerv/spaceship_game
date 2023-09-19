@@ -2,12 +2,7 @@ import pygame
 import os
 #import time
 import random 
-from ship import Ship
-from projectile import Projectile
-from collide import collide
-from player import Player
-from enemy import Enemy
-
+from modules import Ship, Projectile, collide, Player, Enemy
 
 pygame.font.init()
 
